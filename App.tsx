@@ -10,6 +10,8 @@ import {
   AppStateStatus,
 } from 'react-native';
 
+import {GestureHandlerRootView, TouchableWithoutFeedback} from 'react-native-gesture-handler';
+
 import {
   DataCaptureContext,
   Color,
@@ -185,6 +187,7 @@ export const App = () => {
                 sparkScanViewRef.current = view;
                 // @ts-ignore
               }}>
+            <GestureHandlerRootView style={{ flex: 1 }}>
             <SafeAreaView style={styles.container}>
               <Text style={styles.scanCount}>
                 {codes.length}{' '}
@@ -204,12 +207,13 @@ export const App = () => {
                 ))}
               </ScrollView>
 
-              <Pressable
+              <TouchableWithoutFeedback
                   style={styles.clearButton}
                   onPress={handleClearButtonClick}>
                 <Text style={styles.clearButtonText}>CLEAR LIST</Text>
-              </Pressable>
+              </TouchableWithoutFeedback>
             </SafeAreaView>
+            </GestureHandlerRootView>
           </SparkScanView>
       )
   );
